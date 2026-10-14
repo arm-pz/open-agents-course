@@ -90,6 +90,9 @@ tools/search.py                 local keyword retriever over corpus/notes
 tools/check-citations.py        fails when a claim has no [source-id]
 tools/check-sources.py          re-resolves every manifest URL, flags drift
 journal/NNN-<slug>.md           one per build step
+design/preview.html             self-contained specimen of the design system
+DESIGN.md                       colour, type, spacing, layout, motion — source of truth for lessons
+CLAUDE.md                       agent guidance, including the colour-means-provenance invariant
 docs/superpowers/specs/         this design and successors
 README.md  LICENSE.md  .gitignore
 ```

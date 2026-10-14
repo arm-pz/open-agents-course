@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>open-agents-course — design system preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Geist:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F7F4EE;
+    --panel: #FFFDF9;
+    --ink: #17140F;
+    --muted: #6B655C;
+    --rule: #E2DBD0;
+    --rule-soft: #EDE7DE;
+    --source: #12655F;
+    --source-soft: #DCEAE7;
+    --success: #2F7D4F;
+    --warning: #9A6B00;
+    --error: #B3261E;
+    --code-bg: #F1EDE5;
+    --shadow: 0 1px 0 rgba(23,20,15,.04), 0 8px 24px -18px rgba(23,20,15,.25);
+  }
+  [data-theme="dark"] {
+    --paper: #14120F;
+    --panel: #1B1815;
+    --ink: #EAE5DC;
+    --muted: #9C9589;
+    --rule: #2C2823;
+    --rule-soft: #221F1A;
+    --source: #4FB3A5;
+    --source-soft: #122826;
+    --success: #5BA77A;
+    --warning: #C79A3E;
+    --error: #E0736A;
+    --code-bg: #1E1B17;
+    --shadow: none;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  h1,h2,h3 { font-family: Fraunces, Georgia, serif; font-weight: 500; line-height: 1.1; margin: 0 0 12px; }
+  h1 { font-size: clamp(2.6rem, 6vw, 4.4rem); font-weight: 300; letter-spacing: -.02em; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.25rem; }
+  p { margin: 0 0 16px; }
+  .kicker {
+    font-family: Geist, system-ui, sans-serif;
+    font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 20px;
+  }
+  .chip {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px; line-height: 1;
+    color: var(--source);
+    background: var(--source-soft);
+    border: 1px solid color-mix(in srgb, var(--source) 30%, transparent);
+    border-radius: 3px;
+    padding: 3px 6px;
+    text-decoration: none;
+    vertical-align: .18em;
+    white-space: nowrap;
+  }
+  .chip:hover { background: var(--source); color: var(--paper); }
+  a.plain { color: var(--source); text-underline-offset: 3px; }
+
+  header.top {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 0; border-bottom: 1px solid var(--rule);
+  }
+  .wordmark { font-family: Fraunces, serif; font-size: 20px; font-weight: 700; letter-spacing: -.01em; }
+  .toggle {
+    font-family: Geist, sans-serif; font-size: 13px;
+    background: var(--panel); color: var(--ink);
+    border: 1px solid var(--rule); border-radius: 4px; padding: 8px 14px; cursor: pointer;
+  }
+  section { padding: 64px 0; border-bottom: 1px solid var(--rule); }
+  .hero-note { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--muted); }
+
+  .grid { display: grid; gap: 24px; }
+  .two { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 860px) { .two { grid-template-columns: 1fr; } }
+
+  .swatches { display: flex; flex-wrap: wrap; gap: 10px; }
+  .sw { width: 132px; }
+  .sw i { display: block; height: 56px; border: 1px solid var(--rule); border-radius: 4px; }
+  .sw b { font-family: Geist, sans-serif; font-size: 12px; font-weight: 500; display: block; margin-top: 6px; }
+  .sw span { font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--muted); }
+
+  .specimen { border-left: 2px solid var(--rule); padding-left: 20px; margin-bottom: 28px; }
+  .specimen .label { font-family: Geist, sans-serif; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .s-display { font-family: Fraunces, serif; font-size: 40px; font-weight: 500; }
+  .s-body { font-family: "Source Serif 4", serif; font-size: 17px; }
+  .s-ui { font-family: Geist, sans-serif; font-size: 14px; }
+  .s-mono { font-family: "IBM Plex Mono", monospace; font-size: 14px; }
+
+  .card {
+    background: var(--panel); border: 1px solid var(--rule); border-radius: 6px;
+    padding: 20px; box-shadow: var(--shadow);
+  }
+  .btn { font-family: Geist, sans-serif; font-size: 14px; font-weight: 500; border-radius: 4px;
+    padding: 10px 16px; border: 1px solid var(--ink); background: var(--ink); color: var(--paper); cursor: pointer; }
+  .btn.secondary { background: transparent; color: var(--ink); border-color: var(--rule); }
+  .btn.ghost { background: transparent; border-color: transparent; color: var(--source); }
+  .field { font-family: Geist, sans-serif; font-size: 14px; background: var(--panel); color: var(--ink);
+    border: 1px solid var(--rule); border-radius: 4px; padding: 10px 12px; width: 100%; }
+  .alert { font-family: Geist, sans-serif; font-size: 14px; border-radius: 4px; padding: 12px 14px; margin-bottom: 10px; border-left: 3px solid; }
+  .alert.ok { color: var(--success); border-color: var(--success); background: color-mix(in srgb, var(--success) 8%, var(--panel)); }
+  .alert.warn { color: var(--warning); border-color: var(--warning); background: color-mix(in srgb, var(--warning) 8%, var(--panel)); }
+  .alert.bad { color: var(--error); border-color: var(--error); background: color-mix(in srgb, var(--error) 8%, var(--panel)); }
+
+  .lesson { display: grid; grid-template-columns: 200px minmax(0,1fr) 240px; gap: 32px; }
+  @media (max-width: 1000px) { .lesson { grid-template-columns: 1fr; } }
+  .navlist { font-family: Geist, sans-serif; font-size: 13px; }
+  .navlist div { padding: 6px 0; color: var(--muted); }
+  .navlist .here { color: var(--ink); font-weight: 500; border-left: 2px solid var(--ink); padding-left: 10px; margin-left: -12px; }
+  .prose { max-width: 66ch; }
+  pre { background: var(--code-bg); border: 1px solid var(--rule); border-radius: 4px; padding: 14px;
+    font-family: "IBM Plex Mono", monospace; font-size: 13px; line-height: 1.6; overflow-x: auto; }
+  .rail { font-family: Geist, sans-serif; font-size: 12px; }
+  .rail h4 { font-family: Geist, sans-serif; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+  .rail .src { display: block; padding: 8px 0; border-top: 1px solid var(--rule-soft); color: var(--source); text-decoration: none; }
+  .rail .src em { display: block; font-family: "Source Serif 4", serif; font-style: normal; font-size: 11px; color: var(--muted); }
+
+  table { border-collapse: collapse; width: 100%; font-family: Geist, sans-serif; font-size: 13px; }
+  th { text-align: left; font-weight: 600; color: var(--muted); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+  th, td { padding: 10px 8px; border-bottom: 1px solid var(--rule); }
+  td.num { font-variant-numeric: tabular-nums; text-align: right; }
+  .pill { font-family: Geist, sans-serif; font-size: 11px; border: 1px solid var(--rule); border-radius: 999px; padding: 2px 8px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="wordmark">open-agents-course</div>
+    <button class="toggle" onclick="document.documentElement.dataset.theme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light'">light / dark</button>
+  </header>
+
+  <section>
+    <div class="kicker">Design system · v1 proposal</div>
+    <h1>Every claim has a source you can click.</h1>
+    <p class="hero-note">A sourced textbook for building AI agents. Three routes, one module pool, 25–35 primaries.</p>
+    <p style="max-width:60ch">The rule that drives every choice below: <b>colour is reserved for provenance</b>. On a lesson page the only saturated thing is a source chip. Everything else is paper, ink, and rule lines.</p>
+  </section>
+
+  <section>
+    <div class="kicker">01 · Typography</div>
+    <h2>Four faces, each with one job</h2>
+    <div class="specimen"><span class="label">Display / hero — Fraunces 300 &amp; 500</span><div class="s-display">Context Engineering</div></div>
+    <div class="specimen"><span class="label">Body prose — Source Serif 4</span><div class="s-body">An agent chooses an action, observes the result, and folds it back into the next step. That loop is why the context window, not the model, is usually the bottleneck.<span class="chip">[anth-ctx]</span></div></div>
+    <div class="specimen"><span class="label">UI chrome &amp; labels — Geist</span><div class="s-ui">Practitioner track · 9 modules · readiness gate</div></div>
+    <div class="specimen"><span class="label">Code, data &amp; source chips — IBM Plex Mono</span><div class="s-mono">messages.append({"role": "tool", "content": result})</div></div>
+    <p style="max-width:60ch;color:var(--muted);font-size:15px">Measured from peers: Hugging Face uses Source Sans Pro + IBM Plex Mono, LangChain Inter + TWK Lausanne + IBM Plex Mono, OpenAI one custom sans throughout, Anthropic a light serif at 52px over a 14px sans body. Serif display has category precedent; serif <i>body</i> does not — that is a deliberate risk.</p>
+  </section>
+
+  <section>
+    <div class="kicker">02 · Colour</div>
+    <h2>Paper, ink, and one reserved accent</h2>
+    <div class="swatches" style="margin-bottom:24px">
+      <div class="sw"><i style="background:#F7F4EE"></i><b>paper</b><span>#F7F4EE</span></div>
+      <div class="sw"><i style="background:#FFFDF9"></i><b>panel</b><span>#FFFDF9</span></div>
+      <div class="sw"><i style="background:#EDE7DE"></i><b>rule soft</b><span>#EDE7DE</span></div>
+      <div class="sw"><i style="background:#E2DBD0"></i><b>rule</b><span>#E2DBD0</span></div>
+      <div class="sw"><i style="background:#6B655C"></i><b>muted</b><span>#6B655C</span></div>
+      <div class="sw"><i style="background:#17140F"></i><b>ink</b><span>#17140F</span></div>
+      <div class="sw"><i style="background:#12655F"></i><b>source</b><span>#12655F</span></div>
+      <div class="sw"><i style="background:#DCEAE7"></i><b>source soft</b><span>#DCEAE7</span></div>
+    </div>
+    <div class="grid two">
+      <div>
+        <h3>Components</h3>
+        <div style="margin-bottom:16px">
+          <button class="btn">Start the track</button>
+          <button class="btn secondary">Browse modules</button>
+          <button class="btn ghost">Read sources</button>
+        </div>
+        <div class="card" style="margin-bottom:16px">
+          <div class="kicker" style="margin-bottom:8px">Module 04</div>
+          <h3 style="margin-bottom:6px">Tool design</h3>
+          <p style="font-size:15px;margin:0">Interfaces the model can call, and the descriptions that let it choose correctly.<span class="chip">[openai-sdk]</span></p>
+        </div>
+        <label style="font-family:Geist,sans-serif;font-size:12px;color:var(--muted)">Search the corpus</label>
+        <input class="field" value="context rot" style="margin-top:6px">
+      </div>
+      <div>
+        <h3>Semantic states</h3>
+        <div class="alert ok">check-citations.py — every claim traced.</div>
+        <div class="alert warn">Evidence is thin here: 2 sources, both secondary.</div>
+        <div class="alert bad">check-sources.py — mcp-spec URL no longer resolves.</div>
+        <p style="font-size:15px;color:var(--muted);margin-top:16px">Status colours are used only in tool output and gates, never as decoration, so they cannot be confused with the source accent.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="kicker">03 · A lesson page, assembled</div>
+    <h2>Grid: rail · prose · sources</h2>
+    <div class="lesson">
+      <nav class="navlist">
+        <div>Foundations</div>
+        <div class="here">01 · What an agent is</div>
+        <div>02 · The loop</div>
+        <div>03 · Context windows</div>
+        <div>04 · Tool design</div>
+        <div>05 · Memory</div>
+        <div style="margin-top:16px;border-top:1px solid var(--rule);padding-top:12px">Gate: explain, don’t build</div>
+      </nav>
+      <div class="prose">
+        <h1 style="font-size:44px">Context Engineering</h1>
+        <p class="kicker" style="margin:8px 0 24px">Module 03 · all three tracks · prereq: 01, 02</p>
+        <p>Every step an agent takes costs tokens, and the window is finite. The model does not run out of intelligence at 180k tokens; it runs out of the ability to find what matters in the pile.<span class="chip">[anth-ctx]</span></p>
+        <p>That is the whole subject: deciding what is in the window at each step, and what gets pushed out to a tool that can go fetch it again.<span class="chip">[man-composition]</span></p>
+        <pre>def compact(messages, threshold=120_000):
+    if count_tokens(messages) &lt; threshold:
+        return messages
+    head, tail = split_keep_first_and_last(messages)
+    return [summarise(head)] + tail   # &lt;- the common mistake, see below</pre>
+        <h3>The common mistake</h3>
+        <p>Learners summarise the middle and keep everything else. Summarising is lossy in the direction that hurts: the earlier tool results are exactly where the agent’s failed attempts live.<span class="chip">[ctx-rot-paper]</span></p>
+        <p style="font-size:15px;color:var(--muted);border-top:1px solid var(--rule);padding-top:16px"><b>Foundations skips</b> the code block and the exercise. <b>Advanced gets</b> the eval harness for measuring compaction loss.</p>
+      </div>
+      <aside class="rail">
+        <h4>Sources for this section</h4>
+        <a class="src" href="#">[anth-ctx]<em>Anthropic — Effective context engineering for AI agents</em></a>
+        <a class="src" href="#">[man-composition]<em>Manus — Context Engineering for AI Agents</em></a>
+        <a class="src" href="#">[ctx-rot-paper]<em>Chroma — Context Rot (technical report)</em></a>
+        <h4 style="margin-top:24px">Route</h4>
+        <p style="color:var(--muted);margin:0">Foundations 1 · Practitioner 3 · Advanced 2</p>
+      </aside>
+    </div>
+  </section>
+
+  <section>
+    <div class="kicker">04 · A data-dense page</div>
+    <h2>Corpus coverage, per topic</h2>
+    <table>
+      <thead><tr><th>Module</th><th>Track</th><th>Sources</th><th class="num">Claims</th><th class="num">Uncited</th></tr></thead>
+      <tbody>
+        <tr><td>01 What an agent is</td><td><span class="pill">Foundations</span></td><td class="num">4</td><td class="num">31</td><td class="num" style="color:var(--success)">0</td></tr>
+        <tr><td>03 Context engineering</td><td><span class="pill">Practitioner</span></td><td class="num">7</td><td class="num">58</td><td class="num" style="color:var(--success)">0</td></tr>
+        <tr><td>05 Agent memory</td><td><span class="pill">Advanced</span></td><td class="num">3</td><td class="num">44</td><td class="num" style="color:var(--warning)">2</td></tr>
+        <tr><td>07 Multi-agent orchestration</td><td><span class="pill">Advanced</span></td><td class="num">5</td><td class="num">61</td><td class="num" style="color:var(--success)">0</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:15px;color:var(--muted);margin-top:20px">Tabular figures in Plex Mono keep the counts aligned. The Uncited column is <code style="font-family:'IBM Plex Mono',monospace;font-size:13px">tools/check-citations.py</code> output — the one number this project refuses to fake.</p>
+  </section>
+
+  <section style="border-bottom:none">
+    <div class="kicker">05 · Spacing · layout · motion</div>
+    <div class="grid two">
+      <div>
+        <h3>Rules this page demonstrates</h3>
+        <p style="font-size:16px">Base unit 8px, comfortable density. Prose measure capped at 66 characters. Border radius 4px on controls, 6px on cards — never pill-shaped except status pills. Sections on 64px vertical rhythm, divided by a 1px rule rather than by a shadow.</p>
+        <p style="font-size:16px">Motion is minimal-functional: a source chip changes background on hover, and a chip hover can reveal the source title. Entrance animation is limited to a 120ms opacity fade, disabled under <code style="font-family:'IBM Plex Mono',monospace;font-size:13px">prefers-reduced-motion</code>.</p>
+      </div>
+      <div>
+        <h3>Safe / risky</h3>
+        <p style="font-size:16px"><b>Safe:</b> dark mode available, mono code blocks, left module nav, accessible contrast on a 1px-rule grid.</p>
+        <p style="font-size:16px"><b>Risky:</b> light paper as the default (all four peers measured default to dark); serif body prose; colour reserved for provenance only; right rail lists sources instead of a table of contents.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
