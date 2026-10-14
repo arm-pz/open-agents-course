@@ -29,9 +29,9 @@ Authoritative source: `DESIGN.md` at the repo root.
 
 ## Checks that must pass
 
-- `tools/check-citations.py` — fails when a lesson claim has no `[source-id]`. Run before every commit
+- `tools/check_citations.py` — fails when a lesson claim has no `[source-id]`. Run before every commit
   that touches `modules/`.
-- `tools/check-sources.py` — re-resolves every URL in `corpus/manifest.yaml` and flags drift.
+- `tools/check_sources.py` — re-resolves every URL in `corpus/manifest.yaml` and flags drift.
 - `corpus/raw/` stays gitignored. Third-party full text is never published; `corpus/notes/` carries
   attributed, condensed notes and marked quotations only.
 

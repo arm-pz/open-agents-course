@@ -87,8 +87,8 @@ tracks/foundations.yaml         ordered module list, depth notes
 tracks/practitioner.yaml
 tracks/advanced.yaml
 tools/search.py                 local keyword retriever over corpus/notes
-tools/check-citations.py        fails when a claim has no [source-id]
-tools/check-sources.py          re-resolves every manifest URL, flags drift
+tools/check_citations.py        fails when a claim has no [source-id]
+tools/check_sources.py          re-resolves every manifest URL, flags drift
 journal/NNN-<slug>.md           one per build step
 design/preview.html             self-contained specimen of the design system
 DESIGN.md                       colour, type, spacing, layout, motion — source of truth for lessons
@@ -160,10 +160,10 @@ module-learning-path-generator.
   it may not cite an unread one.
 - **Thin evidence:** if retrieval returns weak hits for a topic, the lesson says so in a
   visible "evidence is thin here" note instead of padding with confident prose.
-- **Stale citations:** agent documentation churns fast. `tools/check-sources.py` verifies
+- **Stale citations:** agent documentation churns fast. `tools/check_sources.py` verifies
   every manifest URL still resolves and flags drift; run per module completion and before
   publishing.
-- **Uncited claim:** `tools/check-citations.py` fails the run when a lesson makes a
+- **Uncited claim:** `tools/check_citations.py` fails the run when a lesson makes a
   factual claim with no `[source-id]` and no marker. This is the check that keeps the
   course's one real differentiator intact. Checks are local Python scripts run before each
   commit; GitHub Actions is a later phase, not v1.
