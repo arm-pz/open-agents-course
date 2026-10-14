@@ -1,15 +1,15 @@
 # open-agents-course — design
 
 Date: 2026-10-13
-Status: approved shape, awaiting spec review
+Status: spec v1, under review. Repo created and public.
 Owner: arm-pz (Abdul Rahman P Z)
 
 ## What this is
 
 A free, openly licensed course on building AI agents, structured as source-cited lessons
-with three learner tracks. Two things make it different from the ~600 similar repos: every
-substantive claim traces to an identified source, and the construction of the course is
-itself documented step by step as reusable "build your own" material.
+with three learner tracks. Two things set it apart from the crowded field of agent courses:
+every substantive claim traces to an identified source, and the construction of the course
+is itself documented step by step as reusable "build your own" material.
 
 ## Audience and tracks
 
@@ -181,17 +181,20 @@ lags.
 
 ## Open items
 
-1. **Public remote.** `arm-pz/open-agents-course` does not exist yet. Creating it public is
-   a deliberate step and needs explicit approval before `gh repo create`.
-2. **Custom domain.** `learn.caffeinity.com` is unverified: `caffeinity.com` answers 200,
+1. **Custom domain.** `learn.caffeinity.com` is unverified: `caffeinity.com` answers 200,
    `learn.caffeinity.com` returned nothing, and Qoder Sites exposes only
    `<prefix>-<id>.qoder.website`. Needs confirmation that the apex domain is ours and that
    a custom host is supported. Fallback host: a Qoder Site subdomain.
-3. **QMind notebook.** Blocked from here; needs a notebook created in the QMind UI if
+2. **QMind notebook.** Blocked from here; needs a notebook created in the QMind UI if
    enrichment is wanted.
-4. **Licenses.** Proposal: CC-BY-4.0 for written content, MIT for code, attribution
-   "Abdul Rahman P Z". Confirms nothing in the licensing decision above gets contested
-   later.
+3. **Licenses.** Proposal, not yet applied: CC-BY-4.0 for written content, MIT for code,
+   attribution "Abdul Rahman P Z". The corpus rules above depend on this being settled
+   before the repo claims an open licence it does not yet carry.
+
+## Resolved during setup
+
+- **Public remote.** Created 2026-10-13: https://github.com/arm-pz/open-agents-course
+  (public, `main`, first commit `f03b332`).
 
 ## Out of scope for v1
 
