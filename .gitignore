@@ -1,0 +1,10 @@
+# Full fetched text stays local: grounding without publishing others' work
+corpus/raw/
+
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+.DS_Store
+Thumbs.db
